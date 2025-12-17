@@ -421,7 +421,7 @@ MIT License - Feel free to use this project for personal or commercial purposes.
 
 Jika ada pertanyaan atau issue:
 1. Buka GitHub Issues
-2. Atau email ke: support@example.com
+2. Atau email ke: it@sakuramochijogja.com
 
 ---
 

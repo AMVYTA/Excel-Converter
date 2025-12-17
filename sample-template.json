@@ -1,0 +1,65 @@
+{
+  "name": "Contoh Template: Runchise ke Accurate",
+  "description": "Template konversi dari format export Runchise ke format import Accurate",
+  "sourceFormat": "Runchise Export",
+  "targetFormat": "Accurate Import",
+  "columnMappings": [
+    {
+      "sourceColumn": "Kode Produk",
+      "targetColumn": "Product Code",
+      "transform": null
+    },
+    {
+      "sourceColumn": "Nama Produk",
+      "targetColumn": "Product Name",
+      "transform": null
+    },
+    {
+      "sourceColumn": "Kategori",
+      "targetColumn": "Category",
+      "transform": null
+    },
+    {
+      "sourceColumn": "Harga Jual",
+      "targetColumn": "Sales Price",
+      "transform": {
+        "type": "numberFormat",
+        "config": {
+          "decimals": 2
+        }
+      }
+    },
+    {
+      "sourceColumn": "Harga Beli",
+      "targetColumn": "Purchase Price",
+      "transform": {
+        "type": "numberFormat",
+        "config": {
+          "decimals": 2
+        }
+      }
+    },
+    {
+      "sourceColumn": "Stok",
+      "targetColumn": "Stock Quantity",
+      "transform": null
+    },
+    {
+      "sourceColumn": "Satuan",
+      "targetColumn": "Unit",
+      "transform": null
+    },
+    {
+      "sourceColumn": "Berat (gr)",
+      "targetColumn": "Weight",
+      "transform": null
+    },
+    {
+      "sourceColumn": "Status",
+      "targetColumn": "Active Status",
+      "transform": {
+        "type": "uppercase"
+      }
+    }
+  ]
+}

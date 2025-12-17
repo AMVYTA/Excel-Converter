@@ -1,0 +1,111 @@
+{
+  "id": "sample-row-template-001",
+  "name": "Product Data Cleaning Template",
+  "description": "Filter and transform product data - remove inactive products, normalize names, clean prices",
+  "sourceFormat": "Raw Product Export",
+  "targetFormat": "Clean Product Data",
+  "columnMappings": [
+    {
+      "sourceColumn": "product_name",
+      "targetColumn": "Product Name",
+      "transform": null
+    },
+    {
+      "sourceColumn": "price",
+      "targetColumn": "Price (IDR)",
+      "transform": null
+    },
+    {
+      "sourceColumn": "stock",
+      "targetColumn": "Stock Quantity",
+      "transform": null
+    },
+    {
+      "sourceColumn": "category",
+      "targetColumn": "Category",
+      "transform": null
+    },
+    {
+      "sourceColumn": "sku",
+      "targetColumn": "SKU",
+      "transform": null
+    }
+  ],
+  "rowRules": {
+    "filters": [
+      {
+        "id": "filter-1",
+        "column": "price",
+        "operator": "greaterThan",
+        "value": 0,
+        "description": "Remove products with price <= 0"
+      },
+      {
+        "id": "filter-2",
+        "column": "stock",
+        "operator": "greaterThanOrEquals",
+        "value": 0,
+        "description": "Remove products with negative stock"
+      },
+      {
+        "id": "filter-3",
+        "column": "product_name",
+        "operator": "notEmpty",
+        "value": "",
+        "description": "Remove products without name"
+      }
+    ],
+    "transforms": [
+      {
+        "id": "transform-1",
+        "column": "product_name",
+        "action": "trim",
+        "config": {},
+        "description": "Remove leading/trailing spaces from product names"
+      },
+      {
+        "id": "transform-2",
+        "column": "product_name",
+        "action": "uppercase",
+        "config": {},
+        "description": "Convert product names to uppercase"
+      },
+      {
+        "id": "transform-3",
+        "column": "sku",
+        "action": "replace",
+        "config": {
+          "from": "-",
+          "to": ""
+        },
+        "description": "Remove hyphens from SKU"
+      },
+      {
+        "id": "transform-4",
+        "column": "sku",
+        "action": "uppercase",
+        "config": {},
+        "description": "Convert SKU to uppercase"
+      },
+      {
+        "id": "transform-5",
+        "column": "price",
+        "action": "round",
+        "config": {
+          "decimals": 0
+        },
+        "description": "Round price to whole number"
+      },
+      {
+        "id": "transform-6",
+        "column": "category",
+        "action": "capitalize",
+        "config": {},
+        "description": "Capitalize category names"
+      }
+    ],
+    "reorder": []
+  },
+  "createdAt": "2025-01-15T10:00:00.000Z",
+  "updatedAt": "2025-01-15T10:00:00.000Z"
+}

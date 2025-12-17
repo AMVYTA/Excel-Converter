@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: excel-converter-backend
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - NODE_ENV=production
+      - CORS_ORIGIN=http://192.168.20.61:8089
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/templates:/app/templates
+    restart: unless-stopped
+    networks:
+      - excel-converter-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: excel-converter-frontend
+    ports:
+      - "8089:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - excel-converter-network
+
+networks:
+  excel-converter-network:
+    driver: bridge
+
+volumes:
+  uploads:
+  templates:
